@@ -1,14 +1,14 @@
 // Copyright (c) .NET Foundation. All rights reserved.
 // Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
 
-using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text.Json;
+using Microsoft.Extensions.Configuration;
 
-namespace CodeCapital.Extensions.Configuration.Json
+namespace CodeCapital.AspNetCore.Extensions.Configuration.Json
 {
     internal class JsonConfigurationFileParser
     {

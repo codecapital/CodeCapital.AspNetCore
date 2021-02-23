@@ -1,4 +1,4 @@
-﻿namespace CodeCapital.RazorLibrary.Core
+namespace CodeCapital.AspNetCore.RazorLibrary.Core
 {
     public enum SortStatus
     {

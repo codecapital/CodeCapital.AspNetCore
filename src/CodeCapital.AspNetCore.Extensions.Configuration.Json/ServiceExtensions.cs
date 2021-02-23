@@ -1,12 +1,12 @@
-﻿using Microsoft.Extensions.Configuration;
+using System;
+using System.Linq;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Logging;
 using Polly;
-using System;
-using System.Linq;
 
-namespace CodeCapital.Extensions.Configuration.Json
+namespace CodeCapital.AspNetCore.Extensions.Configuration.Json
 {
     public static class ServiceExtensions
     {

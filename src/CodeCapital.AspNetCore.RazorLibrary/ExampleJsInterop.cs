@@ -1,7 +1,7 @@
-using Microsoft.JSInterop;
 using System.Threading.Tasks;
+using Microsoft.JSInterop;
 
-namespace CodeCapital.RazorLibrary
+namespace CodeCapital.AspNetCore.RazorLibrary
 {
     public class ExampleJsInterop
     {

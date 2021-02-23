@@ -7,13 +7,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeCapital.AspNetCore.Mvc.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeCapital.AspNetCore.Mvc.Renderer", "src\CodeCapital.AspNetCore.Mvc.Renderer\CodeCapital.AspNetCore.Mvc.Renderer.csproj", "{F23FA915-4744-42E1-B484-497BCE2ECFCA}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeCapital.Extensions.Configuration.Json", "src\CodeCapital.Extensions.Configuration.Json\CodeCapital.Extensions.Configuration.Json.csproj", "{B9642B1F-B0DC-4771-971D-1854619635FA}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeCapital.RazorLibrary", "src\CodeCapital.RazorLibrary\CodeCapital.RazorLibrary.csproj", "{ADC18D21-4328-406C-835A-C5244E7E8689}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeCapital.Services", "src\CodeCapital.Services\CodeCapital.Services.csproj", "{CD0F8724-6767-4D47-A551-61F27EF229FE}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeCapital.System", "src\CodeCapital.System\CodeCapital.System.csproj", "{FB64864F-AD8D-4BF6-9199-8D8918741E78}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeCapital.AspNetCore.Extensions.Configuration.Json", "src\CodeCapital.AspNetCore.Extensions.Configuration.Json\CodeCapital.AspNetCore.Extensions.Configuration.Json.csproj", "{EC2A5979-D7A7-4567-83D5-1C2AD04A517E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeCapital.AspNetCore.RazorLibrary", "src\CodeCapital.AspNetCore.RazorLibrary\CodeCapital.AspNetCore.RazorLibrary.csproj", "{602ECCC6-294A-444E-A8A8-5A19B4DBB4F6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,14 +29,6 @@ Global
 		{F23FA915-4744-42E1-B484-497BCE2ECFCA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F23FA915-4744-42E1-B484-497BCE2ECFCA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F23FA915-4744-42E1-B484-497BCE2ECFCA}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B9642B1F-B0DC-4771-971D-1854619635FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B9642B1F-B0DC-4771-971D-1854619635FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B9642B1F-B0DC-4771-971D-1854619635FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B9642B1F-B0DC-4771-971D-1854619635FA}.Release|Any CPU.Build.0 = Release|Any CPU
-		{ADC18D21-4328-406C-835A-C5244E7E8689}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{ADC18D21-4328-406C-835A-C5244E7E8689}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{ADC18D21-4328-406C-835A-C5244E7E8689}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{ADC18D21-4328-406C-835A-C5244E7E8689}.Release|Any CPU.Build.0 = Release|Any CPU
 		{CD0F8724-6767-4D47-A551-61F27EF229FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{CD0F8724-6767-4D47-A551-61F27EF229FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CD0F8724-6767-4D47-A551-61F27EF229FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -45,6 +37,14 @@ Global
 		{FB64864F-AD8D-4BF6-9199-8D8918741E78}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FB64864F-AD8D-4BF6-9199-8D8918741E78}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FB64864F-AD8D-4BF6-9199-8D8918741E78}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EC2A5979-D7A7-4567-83D5-1C2AD04A517E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC2A5979-D7A7-4567-83D5-1C2AD04A517E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC2A5979-D7A7-4567-83D5-1C2AD04A517E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC2A5979-D7A7-4567-83D5-1C2AD04A517E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{602ECCC6-294A-444E-A8A8-5A19B4DBB4F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{602ECCC6-294A-444E-A8A8-5A19B4DBB4F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{602ECCC6-294A-444E-A8A8-5A19B4DBB4F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{602ECCC6-294A-444E-A8A8-5A19B4DBB4F6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

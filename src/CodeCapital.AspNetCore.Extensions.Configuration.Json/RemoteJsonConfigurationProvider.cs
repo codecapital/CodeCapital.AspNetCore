@@ -1,10 +1,10 @@
-﻿using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging;
 using System;
 using System.IO;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 
-namespace CodeCapital.Extensions.Configuration.Json
+namespace CodeCapital.AspNetCore.Extensions.Configuration.Json
 {
     public class RemoteJsonConfigurationProvider : ConfigurationProvider
     {

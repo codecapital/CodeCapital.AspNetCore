@@ -1,9 +1,9 @@
-﻿using Microsoft.Extensions.Logging;
 using System.IO;
 using System.Net.Http;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Logging;
 
-namespace CodeCapital.Extensions.Configuration.Json
+namespace CodeCapital.AspNetCore.Extensions.Configuration.Json
 {
     public class RemoteJsonFileService
     {

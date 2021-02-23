@@ -1,6 +1,6 @@
-﻿using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components;
 
-namespace CodeCapital.RazorLibrary.Core
+namespace CodeCapital.AspNetCore.RazorLibrary.Core
 {
     public interface IColumnDef
     {

@@ -1,7 +1,7 @@
-﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 
-namespace CodeCapital.Extensions.Configuration.Json
+namespace CodeCapital.AspNetCore.Extensions.Configuration.Json
 {
     public static class RemoteJsonConfigurationExtensions
     {

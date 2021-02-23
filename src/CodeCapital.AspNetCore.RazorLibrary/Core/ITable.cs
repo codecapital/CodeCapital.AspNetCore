@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 
-namespace CodeCapital.RazorLibrary.Core
+namespace CodeCapital.AspNetCore.RazorLibrary.Core
 {
     public interface ITable
     {
