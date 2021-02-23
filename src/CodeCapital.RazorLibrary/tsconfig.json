@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "allowJs": true,
+    "outDir": "wwwroot/js",
+    "removeComments": true,
+    "allowUnreachableCode": false,
+    "alwaysStrict": true
+  },
+  "compileOnSave": true,
+  "include": [ "Client" ]
+}

@@ -1,0 +1,123 @@
+﻿@typeparam TItem
+@implements ITable
+<table class="@TableClass @(IsCounter ? _rowIndex : " ")">
+    @ColGroup
+    <thead class="@TheadClass">
+        <tr>
+            @if (IsCounter)
+            {
+                <th class="text-center">#</th>
+            }
+            <CascadingValue Value="this">
+                @ChildContent
+            </CascadingValue>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in _items)
+        {
+            <tr class="@TrClass @GetTrClass(item)" @onclick=@(async () => await ClickAsync(item))>
+                @if (IsCounter)
+                {
+                    <td></td>
+                }
+                @RowTemplate(item)
+            </tr>
+        }
+    </tbody>
+</table>
+@code
+{
+
+    [Parameter] public string? TableClass { get; set; }
+    [Parameter] public string? TheadClass { get; set; }
+    [Parameter] public string? TrClass { get; set; }
+    [Parameter] public Func<TItem, string> TrClassDelegate { get; set; } = default!;
+    [Parameter] public RenderFragment? ColGroup { get; set; }
+    [Parameter] public RenderFragment ChildContent { get; set; } = null!;
+    [Parameter] public RenderFragment<TItem> RowTemplate { get; set; } = null!;
+    [Parameter] public bool IsCounter { get; set; }
+    [Parameter] public EventCallback<TItem> TrClick { get; set; } = default!;
+
+    [Parameter]
+    public List<TItem> Items
+    {
+        get => _items;
+        set
+        {
+            _items = value;
+            _itemsDefault = value;
+        }
+    }
+
+    public List<IColumnDef> Columns { get; set; } = new List<IColumnDef>();
+
+    private List<TItem> _items = new List<TItem>();
+    private List<TItem> _itemsDefault = new List<TItem>();
+
+    private string _rowIndex = "table-counter";
+    private IColumnDef? _sortedColumn;
+
+    private async Task ClickAsync(TItem item)
+    {
+        if (TrClick.HasDelegate)
+            await TrClick.InvokeAsync(item);
+    }
+
+    //private SortStatus _sortStatus = SortStatus.None;
+
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        //Console.WriteLine(TableHeader.GetObjectData());
+
+        //var test = TableHeader.GetObjectData();
+
+        Sort();
+    }
+
+    public void AddColumn(IColumnDef columnDef) => Columns.Add(columnDef);
+
+    public void SortBy(IColumnDef column)
+    {
+        _sortedColumn = column;
+
+        Sort();
+    }
+
+    public void Sort()
+    {
+        if (_sortedColumn == null) return;
+
+        var prop = typeof(TItem).GetProperty(_sortedColumn.SortBy);
+
+        //var sortStatus = column.SortStatus;
+
+        //ChangeSortStatus();
+
+        if (_sortedColumn.SortStatus == SortStatus.Ascending)
+        {
+            _items = _items?.OrderBy(x => prop.GetValue(x, null) ?? "").ToList();
+        }
+        else if (_sortedColumn.SortStatus == SortStatus.Descending)
+        {
+            _items = _items?.OrderByDescending(x => prop.GetValue(x, null)).ToList();
+        }
+        else
+        {
+            _items = _itemsDefault;
+        }
+
+        foreach (var columnDef in Columns.Where(w => w != _sortedColumn))
+        {
+            columnDef.ResetSort();
+        }
+
+        StateHasChanged();
+    }
+
+    private string GetTrClass(TItem item) => TrClassDelegate == null ? "" : TrClassDelegate.Invoke(item);
+
+    //private void ChangeSortStatus() =>
+    //    _sortStatus = _sortStatus == SortStatus.None ? SortStatus.Ascending : _sortStatus == SortStatus.Ascending ? SortStatus.Descending : SortStatus.None;
+}

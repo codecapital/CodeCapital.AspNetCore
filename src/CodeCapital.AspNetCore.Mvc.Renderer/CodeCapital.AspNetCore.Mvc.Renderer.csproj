@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+      <Authors>Vaclav Elias</Authors>
+      <Version>5.0.0</Version>
+      <Description>This library adds RazorViewRenderer, View to string.</Description>
+      <PackageTags>aspnetcore</PackageTags>
+      <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+      <AssemblyVersion>$(Version)</AssemblyVersion>
+      <FileVersion>$(Version)</FileVersion>
+      <Nullable>enable</Nullable>
+      <PackageIcon>icon-512x512.png</PackageIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\icon-512x512.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+</Project>

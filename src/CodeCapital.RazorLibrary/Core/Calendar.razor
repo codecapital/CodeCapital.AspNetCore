@@ -1,0 +1,119 @@
+﻿<div class="card">
+    <table class="table table-calendar table-borderless mb-0">
+        <thead>
+            <tr class="navigation">
+                <td colspan="3">@_firstDay.ToString("MMMM") @_firstDay.Year</td>
+                <td class="action" @onclick="() => Today()" colspan="2">Today</td>
+                <td class="action" @onclick="() => PreviousMonth()"><span class="arrow arrow--up"></span></td>
+                <td class="action" @onclick="() => NextMonth()"><span class="arrow arrow--down"></span></td>
+            </tr>
+        </thead>
+        <tr class="day-names">
+            <td>Mo</td>
+            <td>Tu</td>
+            <td>We</td>
+            <td>Th</td>
+            <td>Fr</td>
+            <td>Sa</td>
+            <td>Su</td>
+        </tr>
+        @for (int j = 0; j < 6; j++)
+        {
+            <tr class="days">
+                @for (int i = 1 + j * 7; i <= 7 + j * 7; i++)
+                {
+                    <td class="align-top @IsThisMonth() @IsToday() @IsSelectedDay()">
+                        <a href="@GetUrl()">@_dayCounter</a>
+                    </td>
+                    if (DateTime.DaysInMonth(_year, _month) == _dayCounter)
+                    {
+                        _dayCounter = 1;
+                        _year = _month == 12 ? _year + 1 : _year;
+                        _month = _month == 12 ? 1 : _month + 1;
+                    }
+                    else
+                    {
+                        _dayCounter = _dayCounter + 1;
+                    }
+                }
+            </tr>
+        }
+    </table>
+</div>
+@code
+{
+    private int _year;
+    private int _month;
+    private readonly DateTime _today = DateTime.Now.Date;
+    private DateTime _firstDay;
+    private DateTime _currentPeriod;
+    private DateTime _selectedDate;
+    private int _dayOfWeek;
+    private int _dayCounter;
+
+    [Parameter] public string? Date { get; set; }
+
+    [Parameter] public string Url { get; set; } = "";
+
+    protected override void OnInitialized()
+    {
+        if (DateTime.TryParse(Date, out var day))
+        {
+            _selectedDate = day;
+        }
+
+        day = _selectedDate == DateTime.MinValue ? DateTime.Now.Date : _selectedDate;
+
+        InitializeCalendar(day.Month, day.Year);
+    }
+
+    private void InitializeCalendar(int month, int year)
+    {
+        _year = year;
+        _month = month;
+        _dayCounter = 1;
+
+        _firstDay = new DateTime(_year, _month, 1);
+        _currentPeriod = _firstDay;
+
+        _dayOfWeek = (int)_firstDay.DayOfWeek == 0 ? 7 : (int)_firstDay.DayOfWeek;
+
+        if (_dayOfWeek != 1)
+        {
+            _dayCounter = _firstDay.AddDays(-_dayOfWeek + 1).Day;
+            _month = _firstDay.AddMonths(-1).Month;
+            _year = _firstDay.Month == 1 ? _firstDay.AddYears(-1).Year : _year;
+        }
+    }
+
+    private void Today()
+    {
+        InitializeCalendar(_today.Month, _today.Year);
+    }
+
+    private string IsToday()
+        => _today.Day == _dayCounter && _today.Month == _month && _today.Year == _year ? " today" : "";
+
+    private string IsSelectedDay()
+        => _selectedDate.Day == _dayCounter && _selectedDate.Month == _month && _selectedDate.Year == _year ? " selected" : "";
+
+    private string IsThisMonth() => _firstDay.Month == _month ? "" : " not-current";
+
+    private void PreviousMonth()
+    {
+        var day = _currentPeriod.AddMonths(-1);
+
+        InitializeCalendar(day.Month, day.Year);
+    }
+
+    private void NextMonth()
+    {
+        var day = _currentPeriod.AddMonths(1);
+
+        InitializeCalendar(day.Month, day.Year);
+    }
+
+    private string GetUrl() => $"{Url}{_year}-{GetString(_month)}-{GetString(_dayCounter)}";
+
+    private string GetString(int number) => number.ToString().PadLeft(2, '0');
+}

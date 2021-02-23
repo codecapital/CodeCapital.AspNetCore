@@ -1,0 +1,12 @@
+﻿@if (Visible)
+{
+    <div mode="indeterminate" class="mat-primary mat-progress-bar">
+        <div class="mat-progress-bar-buffer mat-progress-bar-element"></div>
+        <div class="mat-progress-bar-element mat-progress-bar-fill mat-progress-bar-primary" style="transform: scaleX(0);"></div>
+        <div class="mat-progress-bar-element mat-progress-bar-fill mat-progress-bar-secondary"></div>
+    </div>
+}
+@code
+{
+    [Parameter] public bool Visible { get; set; } = false;
+}

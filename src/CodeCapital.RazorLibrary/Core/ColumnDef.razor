@@ -1,0 +1,125 @@
+﻿@implements IColumnDef
+@if (IsSorting())
+{
+    <th @attributes="GetAttributes()" @onclick="() => SortByColumn()">
+        <div class="mat-sort-header-container @_headerSorted">
+            @if (ChildContent != null)
+            {
+                @ChildContent
+            }
+            else
+            {
+                @Title
+            }
+            <div class="mat-sort-header-arrow" style="">
+                <div class="mat-sort-header-stem"></div>
+                <div class="mat-sort-header-indicator @_direction" style="">
+                    <div class="mat-sort-header-pointer-left" style=""></div>
+                    <div class="mat-sort-header-pointer-right" style=""></div>
+                    <div class="mat-sort-header-pointer-middle"></div>
+                </div>
+            </div>
+        </div>
+    </th>
+}
+else
+{
+    <th @attributes="GetAttributes()">
+        @if (ChildContent != null)
+        {
+            @ChildContent
+        }
+        else
+        {
+            @Title
+        }
+    </th>
+}
+@code
+{
+    [CascadingParameter]
+    private ITable Table { get; set; } = null!;
+
+    [Parameter]
+    public RenderFragment ChildContent { get; set; } = null!;
+
+    [Parameter] public string? Title { get; set; }
+
+    [Parameter] public string? Tooltip { get; set; }
+
+    /// <summary>
+    /// Default is bottom, other options: top, right, left
+    /// </summary>
+    [Parameter] public string? Position { get; set; }
+
+    [Parameter] public string? ThClass { get; set; }
+
+    [Parameter] public string? SortBy { get; set; }
+
+    public SortStatus SortStatus { get; set; } = SortStatus.None;
+
+    private string _headerSorted = "";
+    private string _direction = "asc";
+
+    protected override void OnInitialized()
+    {
+        if (Table == null) throw new ArgumentNullException(nameof(Table), "ColumnDef must exist withing a GenericTable");
+
+        base.OnInitialized();
+
+        Table.AddColumn(this);
+    }
+
+    public void ResetSort()
+    {
+        _headerSorted = "";
+    }
+
+    private void SortByColumn()
+    {
+        if (!IsSorting()) return;
+
+        ChangeSortStatus();
+
+        _headerSorted = SortStatus != SortStatus.None ? "mat-sort-header-sorted" : "";
+
+        _direction = SortStatus == SortStatus.Descending ? "desc" : "asc";
+
+        Table.SortBy(this);
+    }
+
+    public Dictionary<string, object> GetAttributes()
+    {
+        var attributes = new Dictionary<string, object>();
+
+        if (!string.IsNullOrWhiteSpace(Title)) attributes.Add("title", Title);
+        if (!string.IsNullOrWhiteSpace(Tooltip)) attributes.Add("mat-tooltip", Tooltip);
+
+        attributes.Add("class", GetClasses());
+
+        return attributes;
+
+        string GetClasses()
+        {
+            return string.Join(' ', new List<string?>
+{
+                ThClass,
+                IsSortingAction(),
+                new[] {"top", "right", "left"}.Contains(Position) ? "mat-tooltip--" + Position : ""
+
+            }.Where(s => !string.IsNullOrWhiteSpace(s?.Trim())).Select(s => s.Trim()));
+        }
+    }
+
+    //private string AddTitle() => string.IsNullOrWhiteSpace(Title) ? "" : $"title='{Title}'";
+
+    //private string AddTooltip() => string.IsNullOrWhiteSpace(Tooltip) ? "" : $"mat-tooltip='{Tooltip}'";
+
+    private bool IsSorting() => !string.IsNullOrWhiteSpace(SortBy);
+
+    private string IsSortingAction() => IsSorting() ? " action" : "";
+
+    private void ChangeSortStatus() =>
+        SortStatus = SortStatus == SortStatus.None ? SortStatus.Ascending : SortStatus == SortStatus.Ascending ? SortStatus.Descending : SortStatus.None;
+}
+
