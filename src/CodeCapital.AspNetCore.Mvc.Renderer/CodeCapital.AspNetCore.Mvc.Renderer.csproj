@@ -10,6 +10,9 @@
     <FileVersion>$(Version)</FileVersion>
     <Nullable>enable</Nullable>
     <PackageIcon>icon-512x512.png</PackageIcon>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <RepositoryUrl>https://github.com/codecapital/CodeCapital.AspNetCore</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/codecapital/CodeCapital.AspNetCore</PackageProjectUrl>
   </PropertyGroup>
 
   <ItemGroup>
