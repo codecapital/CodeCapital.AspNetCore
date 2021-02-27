@@ -1,4 +1,4 @@
-name: .NET Build
+name: .NET Build and Publish Nuget
 
 on:
   workflow_dispatch:
@@ -10,7 +10,7 @@ on:
 jobs:
   build:
 
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v2
@@ -24,3 +24,8 @@ jobs:
       run: dotnet build --no-restore
     - name: Test
       run: dotnet test --no-build --verbosity normal
+    - name: Publish  
+      uses: brandedoutcast/publish-nuget@v2.5.5  
+      with:   
+        PROJECT_FILE_PATH: src/CodeCapital.AspNetCore.Extensions.Configuration.Json/CodeCapital.AspNetCore.Extensions.Configuration.Json.csproj  
+        NUGET_KEY: ${{secrets.NUGET_API_KEY}} 
