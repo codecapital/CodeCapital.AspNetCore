@@ -24,8 +24,18 @@ jobs:
       run: dotnet build --no-restore
     - name: Test
       run: dotnet test --no-build --verbosity normal
-    - name: Publish  
+    #- name: Publish ConfigurationJson 
+    #  uses: brandedoutcast/publish-nuget@v2.5.5  
+    #  with:   
+    #    PROJECT_FILE_PATH: src/CodeCapital.AspNetCore.Extensions.Configuration.Json/CodeCapital.AspNetCore.Extensions.Configuration.Json.csproj  
+    #    NUGET_KEY: ${{secrets.NUGET_API_KEY}}       
+    - name: Publish Renderer 
       uses: brandedoutcast/publish-nuget@v2.5.5  
       with:   
-        PROJECT_FILE_PATH: src/CodeCapital.AspNetCore.Extensions.Configuration.Json/CodeCapital.AspNetCore.Extensions.Configuration.Json.csproj  
+        PROJECT_FILE_PATH: src/CodeCapital.AspNetCore.Mvc.Renderer/CodeCapital.AspNetCore.Mvc.Renderer.csproj  
         NUGET_KEY: ${{secrets.NUGET_API_KEY}} 
+    - name: Publish TagHelpers 
+      uses: brandedoutcast/publish-nuget@v2.5.5  
+      with:   
+        PROJECT_FILE_PATH: src/CodeCapital.AspNetCore.Mvc.TagHelpers/CodeCapital.AspNetCore.Mvc.TagHelpers.csproj  
+        NUGET_KEY: ${{secrets.NUGET_API_KEY}}         
