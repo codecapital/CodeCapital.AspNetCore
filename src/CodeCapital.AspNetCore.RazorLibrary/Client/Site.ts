@@ -1,4 +1,4 @@
-﻿function activateRipple() {
+function activateRipple() {
 
   document.addEventListener('mousedown', (e: MouseEvent) => {
 
@@ -17,7 +17,7 @@
 
       //const y = e.pageY - pos.top - (size / 2);
       //const y = pos.top + (e.clientY - pos.top);
-      //const y = element.offsetHeight;// - e.clientY + pos.top;
+      //const y = element.offsetHeight;//- e.clientY + pos.top;
       //const y = e.clientY - pos.top;
       //const y = e.clientY - pos.top - (element.offsetHeight / 2);
 
