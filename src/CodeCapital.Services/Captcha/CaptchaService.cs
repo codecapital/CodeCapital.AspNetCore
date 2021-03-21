@@ -1,4 +1,4 @@
-﻿using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using System;
 using System.Net.Http;
@@ -65,7 +65,7 @@ namespace CodeCapital.Services.Captcha
             }
 
             static CaptchaResponseDto FailedCaptchaResponseDto(string message)
-                => new CaptchaResponseDto { Success = false, Message = message };
+                => new() { Success = false, Message = message };
         }
 
         //public ReCaptchaSettings GetSettings() => _settings;
