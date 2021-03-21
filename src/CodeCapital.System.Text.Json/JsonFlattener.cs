@@ -18,9 +18,8 @@ namespace CodeCapital.System.Text.Json
         /// <summary>
         /// The delimiter "." used to separate individual keys in a path.
         /// </summary>
-        private const string KeyDelimiter = ".";
 
-        public List<dynamic>? Flatten(string json, JsonSerializerFlattenOptions? options = null)
+        public List<dynamic> Flatten(string json, JsonSerializerFlattenOptions? options = null)
         {
             if (json == null)
             {
@@ -172,13 +171,13 @@ namespace CodeCapital.System.Text.Json
             _currentPath = Combine(_context.Reverse());
         }
 
-        private static string Combine(IEnumerable<string> pathSegments)
+        private string Combine(IEnumerable<string> pathSegments)
         {
             if (pathSegments == null)
             {
                 throw new ArgumentNullException(nameof(pathSegments));
             }
-            return string.Join(KeyDelimiter, pathSegments);
+            return string.Join(_options.KeyDelimiter, pathSegments);
         }
 
         private void IncreaseNesting() => _nestingLevel++;

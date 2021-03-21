@@ -76,5 +76,7 @@ HTML (If a condition is true, nothing renders.)
 ```html
 ```
 
-
+## References
+https://stackoverflow.com/questions/58512542/read-a-json-file-and-generate-string-keys-with-values-in-a-dictionary-like-objec
+https://stackoverflow.com/questions/7394551/c-sharp-flattening-json-structure
 
