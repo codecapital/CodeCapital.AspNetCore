@@ -12,17 +12,17 @@ namespace System.Text.Json.Tests
         [Fact]
         public void Flatten_Returns_ArgumentNullException()
         {
-            var serializer = new JsonFlattener();
+            var flattener = new JsonFlattener();
 
-            Assert.Throws<ArgumentNullException>(() => serializer.Flatten(null));
+            Assert.Throws<ArgumentNullException>(() => flattener.Flatten(null));
         }
 
         [Fact]
         public void Flatten_Returns_Exception_NoJson()
         {
-            var serializer = new JsonFlattener();
+            var flattener = new JsonFlattener();
 
-            var exception = Assert.ThrowsAny<Exception>(() => serializer.Flatten(""));
+            var exception = Assert.ThrowsAny<Exception>(() => flattener.Flatten(""));
 
             Assert.Contains("The input does not contain any JSON tokens", exception.Message);
         }
@@ -30,7 +30,7 @@ namespace System.Text.Json.Tests
         [Fact]
         public void Flatten_Returns_ListOfTwoItems()
         {
-            var serializer = new JsonFlattener();
+            var flattener = new JsonFlattener();
 
             var items = new List<Person>
             {
@@ -41,7 +41,7 @@ namespace System.Text.Json.Tests
                 new Person("Carl", 23, DateTime.Now.AddYears(-23))
             };
 
-            var result = serializer.Flatten(JsonSerializer.Serialize(items));
+            var result = flattener.Flatten(JsonSerializer.Serialize(items));
 
             Assert.Equal(5, result?.Count);
             Assert.Equal("John", result?[0].Name);
