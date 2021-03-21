@@ -8,17 +8,14 @@ namespace CodeCapital.System.Text.Json
 {
     public class JsonFlattener
     {
-        private readonly List<dynamic> _data = new();
-        private readonly Stack<string> _context = new();
-        private ExpandoObject? _expandoObject = null;
-        private string _currentPath = null!;
         private int _nestingLevel = 0;
+        private string _currentPath = null!;
+        private readonly Stack<string> _context = new();
         private JsonSerializerFlattenOptions _options = new();
+        private ExpandoObject? _expandoObject = null;
+        private readonly List<dynamic> _data = new();
 
-        /// <summary>
-        /// The delimiter "." used to separate individual keys in a path.
-        /// </summary>
-
+        //ToDo There could be 2 options. Return IDictionary<string, object> or ExpandoObject
         public List<dynamic> Flatten(string json, JsonSerializerFlattenOptions? options = null)
         {
             if (json == null)
@@ -52,6 +49,7 @@ namespace CodeCapital.System.Text.Json
                     throw new FormatException($"Unsupported JSON token '{doc.RootElement.ValueKind}' was found.");
             }
 
+            // There must be ToList to clone the list
             return _data.ToList();
         }
 
