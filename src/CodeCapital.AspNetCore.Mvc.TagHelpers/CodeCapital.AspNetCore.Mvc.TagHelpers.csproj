@@ -2,7 +2,7 @@
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
     <Nullable>enable</Nullable>
-    <Version>5.0.0</Version>
+    <Version>5.0.4</Version>
     <Description>This library adds a few helpful tag helpers: asp-if, asp-class-*, asp-is-authorised. Note that you use word negate instead depricated asp-else. Also you use asp-if tag element instead asp-if-inner which was depricated.</Description>
     <PackageTags>aspnetcore</PackageTags>
     <Authors>Vaclav Elias</Authors>

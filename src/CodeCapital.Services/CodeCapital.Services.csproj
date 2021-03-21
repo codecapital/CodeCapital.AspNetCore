@@ -2,7 +2,7 @@
   <PropertyGroup>
     <TargetFrameworks>net5.0</TargetFrameworks>
     <Authors>Vaclav Elias</Authors>
-    <Version>5.0.0</Version>
+    <Version>5.0.4</Version>
     <Description>This library adds a few useful services for ASP.NET Core applications; MailGun, Rss, ReCaptcha, SiteMap..</Description>
     <PackageTags>aspnetcore</PackageTags>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>

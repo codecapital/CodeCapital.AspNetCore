@@ -2,7 +2,7 @@
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
     <Nullable>enable</Nullable>
-    <Version>5.0.0</Version>
+    <Version>5.0.4</Version>
     <Description>This library adds an extension AddRemoteJsonFile() for configuration from remote url</Description>
     <PackageTags>aspnetcore</PackageTags>
     <Authors>Vaclav Elias</Authors>
