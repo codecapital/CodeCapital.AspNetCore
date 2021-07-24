@@ -15,7 +15,7 @@ namespace CodeCapital.System.Text.Json
         private ExpandoObject? _expandoObject = null;
         private readonly List<dynamic> _data = new();
 
-        //ToDo There could be 2 options. Returnn IDictionary<string, object> or ExpandoObject
+        //ToDo There could be 2 options. Return IDictionary<string, object> or ExpandoObject
         public List<dynamic> Flatten(string json, JsonSerializerFlattenOptions? options = null)
         {
             if (json == null)
