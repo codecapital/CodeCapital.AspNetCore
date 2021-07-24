@@ -1,8 +1,9 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
+    <Version>6.0.0</Version>
+    <PackageVersion>$(Version)-preview.6</PackageVersion>
     <Authors>Vaclav Elias</Authors>
-    <Version>5.0.4</Version>
     <Description>This library adds RazorViewRenderer, View to string.</Description>
     <PackageTags>aspnetcore</PackageTags>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
