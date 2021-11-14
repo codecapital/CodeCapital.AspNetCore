@@ -2,7 +2,7 @@
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
     <Version>6.0.0</Version>
-    <PackageVersion>$(Version)-preview.6</PackageVersion>
+    <PackageVersion>$(Version)</PackageVersion>
     <Authors>Vaclav Elias</Authors>
     <Description>This library adds a few useful services for ASP.NET Core applications; MailGun, Rss, ReCaptcha, SiteMap..</Description>
     <PackageTags>aspnetcore</PackageTags>
@@ -17,9 +17,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Extensions.Http" Version="6.0.0-preview.6.21352.12" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="6.0.0-preview.6.21352.12" />
-    <PackageReference Include="System.Text.Json" Version="6.0.0-preview.6.21352.12" />
+    <PackageReference Include="Microsoft.Extensions.Http" Version="6.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="6.0.0" />
+    <PackageReference Include="System.Text.Json" Version="6.0.0" />
   </ItemGroup>
 
   <ItemGroup>

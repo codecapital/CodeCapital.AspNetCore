@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
     <Version>6.0.0</Version>
-    <PackageVersion>$(Version)-preview.6</PackageVersion>
+    <PackageVersion>$(Version)</PackageVersion>
     <Nullable>enable</Nullable>
     <Description>This library adds a few helpful components: If, ProgressBar, GenericTable</Description>
     <PackageTags>aspnetcore,blazor,razor</PackageTags>
@@ -38,8 +38,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Components" Version="6.0.0-preview.6.21355.2" />
-    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="6.0.0-preview.6.21355.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Components" Version="6.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="6.0.0" />
     <!--<PackageReference Include="Microsoft.TypeScript.MSBuild" Version="4.1.4">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

@@ -2,7 +2,7 @@
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
     <Version>6.0.0</Version>
-    <PackageVersion>$(Version)-preview.6</PackageVersion>
+    <PackageVersion>$(Version)</PackageVersion>
     <Authors>Vaclav Elias</Authors>
     <Description>This library adds RazorViewRenderer, View to string.</Description>
     <PackageTags>aspnetcore</PackageTags>
