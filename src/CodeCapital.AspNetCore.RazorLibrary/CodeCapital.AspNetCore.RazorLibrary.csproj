@@ -1,54 +1,54 @@
 <Project Sdk="Microsoft.NET.Sdk.Razor">
 
-  <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
-    <Version>6.0.0</Version>
-    <PackageVersion>$(Version)</PackageVersion>
-    <Nullable>enable</Nullable>
-    <Description>This library adds a few helpful components: If, ProgressBar, GenericTable</Description>
-    <PackageTags>aspnetcore,blazor,razor</PackageTags>
-    <Authors>Vaclav Elias</Authors>
-    <Company>Code Capital</Company>
-    <FileVersion>$(Version)</FileVersion>
-    <PackageIcon>icon-512x512.png</PackageIcon>
-    <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <RepositoryUrl>https://github.com/codecapital/CodeCapital.AspNetCore</RepositoryUrl>
-    <PackageProjectUrl>https://github.com/codecapital/CodeCapital.AspNetCore</PackageProjectUrl>
-  </PropertyGroup>
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <Version>6.0.3</Version>
+        <PackageVersion>$(Version)</PackageVersion>
+        <Nullable>enable</Nullable>
+        <Description>This library adds a few helpful components: If, ProgressBar, GenericTable</Description>
+        <PackageTags>aspnetcore,blazor,razor</PackageTags>
+        <Authors>Vaclav Elias</Authors>
+        <Company>Code Capital</Company>
+        <FileVersion>$(Version)</FileVersion>
+        <PackageIcon>icon-512x512.png</PackageIcon>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <RepositoryUrl>https://github.com/codecapital/CodeCapital.AspNetCore</RepositoryUrl>
+        <PackageProjectUrl>https://github.com/codecapital/CodeCapital.AspNetCore</PackageProjectUrl>
+    </PropertyGroup>
 
-  <ItemGroup>
-    <Content Remove="bundleconfig.json" />
-    <Content Remove="compilerconfig.json" />
-    <!--Weird issue, typescript build adds js to Content folder and also tsconfig.json file which is causing error when library is used, it is asking for ts file -->
-    <Content Remove="tsconfig.json" />
-  </ItemGroup>
+    <ItemGroup>
+        <Content Remove="bundleconfig.json" />
+        <Content Remove="compilerconfig.json" />
+        <!--Weird issue, typescript build adds js to Content folder and also tsconfig.json file which is causing error when library is used, it is asking for ts file -->
+        <Content Remove="tsconfig.json" />
+    </ItemGroup>
 
-  <ItemGroup>
-    <_ContentIncludedByDefault Remove="bundleconfig.json" />
-  </ItemGroup>
+    <ItemGroup>
+        <_ContentIncludedByDefault Remove="bundleconfig.json" />
+    </ItemGroup>
 
-  <ItemGroup>
-    <None Include="..\..\icon-512x512.png">
-      <Pack>True</Pack>
-      <PackagePath></PackagePath>
-    </None>
-    <None Include="bundleconfig.json" />
-    <None Include="compilerconfig.json" />
-    <!--<None Include="tsconfig.json" />-->
-  </ItemGroup>
+    <ItemGroup>
+        <None Include="..\..\icon-512x512.png">
+            <Pack>True</Pack>
+            <PackagePath></PackagePath>
+        </None>
+        <None Include="bundleconfig.json" />
+        <None Include="compilerconfig.json" />
+        <!--<None Include="tsconfig.json" />-->
+    </ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Components" Version="6.0.0" />
-    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="6.0.0" />
-    <!--<PackageReference Include="Microsoft.TypeScript.MSBuild" Version="4.1.4">
+    <ItemGroup>
+        <PackageReference Include="Microsoft.AspNetCore.Components" Version="6.0.3" />
+        <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="6.0.3" />
+        <!--<PackageReference Include="Microsoft.TypeScript.MSBuild" Version="4.1.4">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>-->
-  </ItemGroup>
+    </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Client\" />
-    <Folder Include="wwwroot\js\" />
-  </ItemGroup>
+    <ItemGroup>
+        <Folder Include="Client\" />
+        <Folder Include="wwwroot\js\" />
+    </ItemGroup>
 
 </Project>
