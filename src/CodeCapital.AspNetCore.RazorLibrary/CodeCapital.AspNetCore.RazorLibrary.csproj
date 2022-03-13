@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
     <Nullable>enable</Nullable>
-    <Version>5.0.6</Version>
+    <Version>5.0.7</Version>
     <Description>This library adds a few helpful components: If, ProgressBar, GenericTable</Description>
     <PackageTags>aspnetcore,blazor,razor</PackageTags>
     <Authors>Vaclav Elias</Authors>
