@@ -1,25 +1,25 @@
 <Project Sdk="Microsoft.NET.Sdk">
-  <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
-    <Version>6.0.0</Version>
-    <PackageVersion>$(Version)</PackageVersion>
-    <Authors>Vaclav Elias</Authors>
-    <Description>Json flattener to List&lt;dynamic&gt;.</Description>
-    <PackageTags>aspnetcore,json</PackageTags>
-    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
-    <AssemblyVersion>$(Version)</AssemblyVersion>
-    <FileVersion>$(Version)</FileVersion>
-    <Nullable>enable</Nullable>
-    <PackageIcon>icon-512x512.png</PackageIcon>
-    <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <RepositoryUrl>https://github.com/codecapital/CodeCapital.AspNetCore</RepositoryUrl>
-    <PackageProjectUrl>https://github.com/codecapital/CodeCapital.AspNetCore</PackageProjectUrl>
-  </PropertyGroup>
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <Version>6.0.0</Version>
+        <PackageVersion>$(Version)</PackageVersion>
+        <Authors>Vaclav Elias</Authors>
+        <Description>Json flattener to List&lt;dynamic&gt;.</Description>
+        <PackageTags>aspnetcore,json</PackageTags>
+        <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+        <AssemblyVersion>$(Version)</AssemblyVersion>
+        <FileVersion>$(Version)</FileVersion>
+        <Nullable>enable</Nullable>
+        <PackageIcon>icon-512x512.png</PackageIcon>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <RepositoryUrl>https://github.com/codecapital/CodeCapital.AspNetCore</RepositoryUrl>
+        <PackageProjectUrl>https://github.com/codecapital/CodeCapital.AspNetCore</PackageProjectUrl>
+    </PropertyGroup>
 
-  <ItemGroup>
-    <None Include="..\..\icon-512x512.png">
-      <Pack>True</Pack>
-      <PackagePath></PackagePath>
-    </None>
-  </ItemGroup>
+    <ItemGroup>
+        <None Include="..\..\icon-512x512.png">
+            <Pack>True</Pack>
+            <PackagePath></PackagePath>
+        </None>
+    </ItemGroup>
 </Project>
