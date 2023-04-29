@@ -1,18 +1,19 @@
+using System.Dynamic;
 using System.Text.Json;
 
 namespace CodeCapital.System.Text.Json;
 
-public class JsonFlattener
+public class JsonFlattenerAsDynamic
 {
     private int _nestingLevel = 0;
     private string _currentPath = null!;
     private readonly Stack<string> _context = new();
     private JsonSerializerFlattenOptions _options = new();
-    private IDictionary<string, object>? _expandoObject;
-    private readonly List<IDictionary<string, object>> _data = new();
+    private ExpandoObject? _expandoObject;
+    private readonly List<dynamic> _data = new();
 
     [Obsolete]
-    public List<IDictionary<string, object>> Flatten(string json, JsonSerializerFlattenOptions? options = null)
+    public List<dynamic> Flatten(string json, JsonSerializerFlattenOptions? options = null)
     {
         if (json == null)
         {
@@ -49,7 +50,7 @@ public class JsonFlattener
         return _data.ToList();
     }
 
-    public async Task<List<IDictionary<string, object>>> FlattenAsync(Stream jsonStream, JsonSerializerFlattenOptions? options = null)
+    public async Task<List<dynamic>> FlattenAsync(Stream jsonStream, JsonSerializerFlattenOptions? options = null)
     {
         if (jsonStream == null)
         {
@@ -159,7 +160,7 @@ public class JsonFlattener
         DecreaseNesting();
     }
 
-    private void CreateExpando() => _expandoObject = new Dictionary<string, object>();
+    private void CreateExpando() => _expandoObject = new ExpandoObject();
 
     private void ProcessExpando()
     {
@@ -180,14 +181,14 @@ public class JsonFlattener
             AddKeyValue(key, value.ToString() ?? "");
 
         void AddKeyValue(string keyItem, object valueItem)
-            => _expandoObject?.Add(keyItem, valueItem);
+            => (_expandoObject as IDictionary<string, object>)?.Add(keyItem, valueItem);
 
         static string RemoveIndentation(JsonElement valueItem)
             => valueItem.ToString()?.Replace("\t", "").Replace("\n", "") ?? string.Empty;
     }
 
     private void AddNullValue(string key)
-        => _expandoObject?.Add(key, "NULL");
+        => (_expandoObject as IDictionary<string, object>)?.Add(key, "NULL");
 
     private void EnterContext(string context)
     {

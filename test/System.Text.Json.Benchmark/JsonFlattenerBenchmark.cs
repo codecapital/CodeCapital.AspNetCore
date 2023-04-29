@@ -23,22 +23,22 @@ public class JsonFlattenerBenchmark
     public void Setup()
     {
         _flattener = new JsonFlattener();
-        _json = File.ReadAllText("data/test-json-file2.json");
+        _json = File.ReadAllText("data/test-json-file.json");
         _jsonStream = new MemoryStream(Encoding.UTF8.GetBytes(_json));
     }
 
     [Benchmark]
-    public List<dynamic> Flatten()
+    public List<IDictionary<string, object>> FlattenAsDictionary()
     {
-        if (_json is null || _flattener is null) return new List<dynamic>();
+        if (_json is null || _flattener is null) return new List<IDictionary<string, object>>();
 
         return _flattener.Flatten(_json);
     }
 
     [Benchmark]
-    public async Task<List<dynamic>> FlattenAsync()
+    public async Task<List<IDictionary<string, object>>> FlattenAsyncAsDictionary()
     {
-        if (_jsonStream is null || _flattener is null) return new List<dynamic>();
+        if (_jsonStream is null || _flattener is null) return new List<IDictionary<string, object>>();
 
         _jsonStream.Position = 0;
 
