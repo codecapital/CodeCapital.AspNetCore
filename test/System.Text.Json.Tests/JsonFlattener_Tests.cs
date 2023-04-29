@@ -1,5 +1,4 @@
 using CodeCapital.System.Text.Json;
-using System.Collections.Generic;
 using System.Text.Json.Tests.Models;
 using Xunit;
 
@@ -31,6 +30,7 @@ namespace System.Text.Json.Tests
         public void Flatten_Returns_ListOfTwoItems()
         {
             var flattener = new JsonFlattener();
+            var options = new JsonSerializerFlattenOptions { MaxDepth = 2 };
 
             var items = new List<Person>
             {
@@ -38,10 +38,11 @@ namespace System.Text.Json.Tests
                 new Person("Lisa", 18, DateTime.Now.AddYears(-18).AddDays(1)),
                 new Person("Barbara", 18, DateTime.Now.AddYears(-18).AddDays(-1)),
                 new Person("Peter", 18, DateTime.Now.AddYears(-18).AddMinutes(5)),
-                new Person("Carl", 23, DateTime.Now.AddYears(-23))
+                new Person("Carl", 23, DateTime.Now.AddYears(-23)),
+                new Person("Vaso", 20, DateTime.Now.AddYears(-20), "Bethlehem House", true, null),
             };
 
-            var result = flattener.Flatten(JsonSerializer.Serialize(items));
+            var result = flattener.Flatten(JsonSerializer.Serialize(items), options);
 
             //Assert.Equal(5, result?.Count);
             //Assert.Equal("John", result?[0]["Name"]);
@@ -65,7 +66,7 @@ namespace System.Text.Json.Tests
                 new Person(null, 15, DateTime.Now.AddYears(-15), "Lime House Street", true, null),
             };
 
-            var serializer = new CodeCapital.System.Text.Json.JsonFlattener();
+            var serializer = new JsonFlattener();
 
             var result1 = serializer.Flatten(JsonSerializer.Serialize(people), new JsonSerializerFlattenOptions { MaxDepth = 10 });
 
@@ -76,5 +77,3 @@ namespace System.Text.Json.Tests
         }
     }
 }
-
-

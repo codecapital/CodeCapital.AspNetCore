@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31019.35
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33530.505
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeCapital.AspNetCore.Mvc.TagHelpers", "src\CodeCapital.AspNetCore.Mvc.TagHelpers\CodeCapital.AspNetCore.Mvc.TagHelpers.csproj", "{72CDAABB-9A1A-4E62-B805-0CAFABB53218}"
 EndProject
@@ -24,9 +24,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeCapital.System.Text.Json", "src\CodeCapital.System.Text.Json\CodeCapital.System.Text.Json.csproj", "{85C1DBC1-0786-4D93-A879-DAB09F87E3CA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "System.Text.Json.Tests", "test\System.Text.Json.Tests\System.Text.Json.Tests.csproj", "{CDD6F3F4-ABBA-4E1F-9F85-99B377C0B168}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "System.Text.Json.Tests", "test\System.Text.Json.Tests\System.Text.Json.Tests.csproj", "{CDD6F3F4-ABBA-4E1F-9F85-99B377C0B168}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{CDCCA403-2F25-4C93-B153-6B654992DF85}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "System.Text.Json.Benchmark", "test\System.Text.Json.Benchmark\System.Text.Json.Benchmark.csproj", "{362337B0-5CB8-43ED-9F03-8F03A593F220}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -66,12 +68,17 @@ Global
 		{CDD6F3F4-ABBA-4E1F-9F85-99B377C0B168}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CDD6F3F4-ABBA-4E1F-9F85-99B377C0B168}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CDD6F3F4-ABBA-4E1F-9F85-99B377C0B168}.Release|Any CPU.Build.0 = Release|Any CPU
+		{362337B0-5CB8-43ED-9F03-8F03A593F220}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{362337B0-5CB8-43ED-9F03-8F03A593F220}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{362337B0-5CB8-43ED-9F03-8F03A593F220}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{362337B0-5CB8-43ED-9F03-8F03A593F220}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{CDD6F3F4-ABBA-4E1F-9F85-99B377C0B168} = {CDCCA403-2F25-4C93-B153-6B654992DF85}
+		{362337B0-5CB8-43ED-9F03-8F03A593F220} = {CDCCA403-2F25-4C93-B153-6B654992DF85}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D953D007-3FBC-4919-9800-B177EF533619}
