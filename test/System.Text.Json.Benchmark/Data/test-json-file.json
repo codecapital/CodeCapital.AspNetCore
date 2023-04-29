@@ -1,0 +1,104 @@
+[
+  {
+    "id": 12647,
+    "dateAdded": 1322826368183,
+    "name": "FS Tech",
+    "enabled": true
+  },
+  {
+    "id": 12648,
+    "dateAdded": 1322826368213,
+    "name": "FS Finance",
+    "enabled": true
+  },
+  {
+    "id": 12649,
+    "dateAdded": 1322826368213,
+    "name": "C & I Tech",
+    "enabled": true
+  },
+  {
+    "id": 12650,
+    "dateAdded": 1322826368230,
+    "name": "C & I Finance",
+    "enabled": true
+  },
+  {
+    "id": 12651,
+    "dateAdded": 1322826368230,
+    "name": "Prof Serv",
+    "enabled": true
+  },
+  {
+    "id": 12652,
+    "dateAdded": 1322826368260,
+    "name": "Random name",
+    "enabled": true
+  },
+  {
+    "id": 12653,
+    "dateAdded": 1322826368277,
+    "name": "US FS",
+    "enabled": true
+  },
+  {
+    "id": 12654,
+    "dateAdded": 1322826368290,
+    "name": "US C & I",
+    "enabled": true
+  },
+  {
+    "id": 12655,
+    "dateAdded": 1322826368307,
+    "name": "Mission Control",
+    "enabled": true
+  },
+  {
+    "id": 13504,
+    "dateAdded": 1332243903857,
+    "name": "Random Name 3",
+    "enabled": true
+  },
+  {
+    "id": 13566,
+    "dateAdded": 1333361273607,
+    "name": "IT",
+    "enabled": true
+  },
+  {
+    "id": 15424,
+    "dateAdded": 1349771399330,
+    "name": "Smoke Test",
+    "enabled": true
+  },
+  {
+    "id": 17252,
+    "dateAdded": 1364234627347,
+    "name": "FS Operations",
+    "enabled": true
+  },
+  {
+    "id": 19663,
+    "dateAdded": 1386841255297,
+    "name": "Energy",
+    "enabled": true
+  },
+  {
+    "id": 19664,
+    "dateAdded": 1386841255330,
+    "name": "Health",
+    "enabled": true
+  },
+  {
+    "id": 19665,
+    "dateAdded": 1386841255343,
+    "name": "Digital",
+    "enabled": true
+  },
+  {
+    "id": 21565,
+    "dateAdded": 1400507193687,
+    "name": "FS Compliance",
+    "enabled": true
+  }
+]
