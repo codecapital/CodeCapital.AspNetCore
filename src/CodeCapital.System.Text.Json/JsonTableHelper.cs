@@ -7,19 +7,19 @@
 public static class JsonTableHelper
 {
     /// <summary>
-    /// Extracts unique column names from a list of flattened JSON objects.
+    /// Extracts the column names from the flattened JSON data.
     /// </summary>
-    /// <param name="data">A list of dynamic objects representing the flattened JSON data.</param>
-    /// <returns>A HashSet of unique column names.</returns>
+    /// <param name="data">A list of dictionaries representing flattened JSON data.</param>
+    /// <returns>A HashSet of unique column names found in the data.</returns>
     public static HashSet<string> ExtractColumnNames(List<IDictionary<string, object>> data)
         => data.SelectMany(row => row?.Keys ?? Enumerable.Empty<string>()).ToHashSet();
 
     /// <summary>
-    /// Gets the value of a specific column in a flattened JSON object.
+    /// Gets the value of the specified column name in the given row.
     /// </summary>
-    /// <param name="row">A dynamic object representing a flattened JSON object.</param>
-    /// <param name="columnName">The name of the column to retrieve the value from.</param>
-    /// <returns>The value of the specified column or null if the column does not exist.</returns>
+    /// <param name="row">A dictionary representing a row of flattened JSON data.</param>
+    /// <param name="columnName">The name of the column to retrieve the value for.</param>
+    /// <returns>The value of the specified column in the row, or null if the column does not exist in the row.</returns>
     public static object? GetValue(IDictionary<string, object> row, string columnName)
     {
         if (row.ContainsKey(columnName))
@@ -31,12 +31,11 @@ public static class JsonTableHelper
     }
 
     /// <summary>
-    /// Gets the value of a specific column in a flattened JSON object as a string.
+    /// Gets the value of the specified column name in the given row as a string.
     /// </summary>
-    /// <param name="row">A dynamic object representing a flattened JSON object.</param>
-    /// <param name="columnName">The name of the column to retrieve the value from.</param>
-    /// <returns>The value of the specified column as a string or "null" if the column does not exist.</returns>
-
+    /// <param name="row">A dictionary representing a row of flattened JSON data.</param>
+    /// <param name="columnName">The name of the column to retrieve the value for.</param>
+    /// <returns>The value of the specified column in the row as a string, or "null" if the column does not exist in the row.</returns>
     public static string GetValueAsString(IDictionary<string, object> row, string columnName)
         => GetValue(row, columnName)?.ToString() ?? "null";
 }

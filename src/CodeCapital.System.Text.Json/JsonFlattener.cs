@@ -8,11 +8,66 @@ public class JsonFlattener
     private string _currentPath = null!;
     private readonly Stack<string> _context = new();
     private JsonSerializerFlattenOptions _options = new();
-    private IDictionary<string, object>? _expandoObject;
+    private IDictionary<string, object>? _flattenedObject;
     private readonly List<IDictionary<string, object>> _data = new();
 
     [Obsolete]
     public List<IDictionary<string, object>> Flatten(string json, JsonSerializerFlattenOptions? options = null)
+    {
+        Initialize(json, options);
+
+        var jsonDocumentOptions = new JsonDocumentOptions
+        {
+            CommentHandling = JsonCommentHandling.Skip,
+            AllowTrailingCommas = true,
+        };
+
+        using var doc = JsonDocument.Parse(json, jsonDocumentOptions);
+
+        ProcessRootElement(doc.RootElement);
+
+        // There must be ToList to clone the list
+        return _data.ToList();
+    }
+
+    public async Task<List<IDictionary<string, object>>> FlattenAsync(Stream jsonStream, JsonSerializerFlattenOptions? options = null)
+    {
+        Initialize(jsonStream, options);
+
+        var jsonDocumentOptions = new JsonDocumentOptions
+        {
+            CommentHandling = JsonCommentHandling.Skip,
+            AllowTrailingCommas = true,
+        };
+
+        using var doc = await JsonDocument.ParseAsync(jsonStream, jsonDocumentOptions).ConfigureAwait(false);
+
+        JsonElement startingElement;
+
+        if (_options.StartToken == null)
+        {
+            startingElement = doc.RootElement;
+        }
+        else
+        {
+            if (doc.RootElement.ValueKind != JsonValueKind.Object)
+            {
+                throw new InvalidOperationException("The startToken parameter can only be used when the root element is an object.");
+            }
+
+            if (!doc.RootElement.TryGetProperty(_options.StartToken, out startingElement))
+            {
+                throw new ArgumentException($"The specified startToken '{_options.StartToken}' was not found in the JSON document.");
+            }
+        }
+
+        ProcessRootElement(startingElement);
+
+        // There must be ToList to clone the list
+        return _data.ToList();
+    }
+
+    private void Initialize(string json, JsonSerializerFlattenOptions? options)
     {
         if (json == null)
         {
@@ -23,33 +78,10 @@ public class JsonFlattener
 
         if (_options.MaxDepth <= 0) throw new ArgumentException($"{_options.MaxDepth} must be more than 0");
 
-        var jsonDocumentOptions = new JsonDocumentOptions
-        {
-            CommentHandling = JsonCommentHandling.Skip,
-            AllowTrailingCommas = true,
-        };
-
         ResetFlattener();
-
-        using var doc = JsonDocument.Parse(json, jsonDocumentOptions);
-
-        switch (doc.RootElement.ValueKind)
-        {
-            case JsonValueKind.Object:
-                VisitElement(doc.RootElement);
-                break;
-            case JsonValueKind.Array:
-                VisitValue(doc.RootElement);
-                break;
-            default:
-                throw new FormatException($"Unsupported JSON token '{doc.RootElement.ValueKind}' was found.");
-        }
-
-        // There must be ToList to clone the list
-        return _data.ToList();
     }
 
-    public async Task<List<IDictionary<string, object>>> FlattenAsync(Stream jsonStream, JsonSerializerFlattenOptions? options = null)
+    private void Initialize(Stream jsonStream, JsonSerializerFlattenOptions? options)
     {
         if (jsonStream == null)
         {
@@ -60,37 +92,29 @@ public class JsonFlattener
 
         if (_options.MaxDepth <= 0) throw new ArgumentException($"{_options.MaxDepth} must be more than 0");
 
-        var jsonDocumentOptions = new JsonDocumentOptions
-        {
-            CommentHandling = JsonCommentHandling.Skip,
-            AllowTrailingCommas = true,
-        };
-
         ResetFlattener();
+    }
 
-        using var doc = await JsonDocument.ParseAsync(jsonStream, jsonDocumentOptions).ConfigureAwait(false);
-
-        switch (doc.RootElement.ValueKind)
+    private void ProcessRootElement(JsonElement rootElement)
+    {
+        switch (rootElement.ValueKind)
         {
             case JsonValueKind.Object:
-                VisitElement(doc.RootElement);
+                VisitElement(rootElement);
                 break;
             case JsonValueKind.Array:
-                VisitValue(doc.RootElement);
+                VisitValue(rootElement);
                 break;
             default:
-                throw new FormatException($"Unsupported JSON token '{doc.RootElement.ValueKind}' was found.");
+                throw new FormatException($"Unsupported JSON token '{rootElement.ValueKind}' was found.");
         }
-
-        // There must be ToList to clone the list
-        return _data.ToList();
     }
 
     private void ResetFlattener()
     {
         _data.Clear();
         _context.Clear();
-        _expandoObject = null;
+        _flattenedObject = null;
         _currentPath = null!;
         _nestingLevel = 0;
     }
@@ -121,13 +145,17 @@ public class JsonFlattener
 
             case JsonValueKind.Array:
 
-                if (_expandoObject == null)
+                if (_flattenedObject == null)
                 {
                     foreach (var arrayElement in value.EnumerateArray())
                     {
-                        CreateExpando();
+                        _flattenedObject = new Dictionary<string, object>();
+
                         VisitValue(arrayElement);
-                        ProcessExpando();
+
+                        _data.Add(_flattenedObject);
+
+                        _flattenedObject = null;
                     }
                 }
                 else
@@ -159,17 +187,6 @@ public class JsonFlattener
         DecreaseNesting();
     }
 
-    private void CreateExpando() => _expandoObject = new Dictionary<string, object>();
-
-    private void ProcessExpando()
-    {
-        if (_expandoObject == null) return;
-
-        _data.Add(_expandoObject);
-
-        _expandoObject = null;
-    }
-
     private void AddJsonValue(string key, JsonElement value)
     {
         if (_options.RemoveIntended && value.ValueKind is JsonValueKind.Object)
@@ -180,14 +197,14 @@ public class JsonFlattener
             AddKeyValue(key, value.ToString() ?? "");
 
         void AddKeyValue(string keyItem, object valueItem)
-            => _expandoObject?.Add(keyItem, valueItem);
+            => _flattenedObject?.Add(keyItem, valueItem);
 
         static string RemoveIndentation(JsonElement valueItem)
             => valueItem.ToString()?.Replace("\t", "").Replace("\n", "") ?? string.Empty;
     }
 
     private void AddNullValue(string key)
-        => _expandoObject?.Add(key, "NULL");
+        => _flattenedObject?.Add(key, "NULL");
 
     private void EnterContext(string context)
     {
