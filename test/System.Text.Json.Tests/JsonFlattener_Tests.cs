@@ -49,10 +49,10 @@ namespace System.Text.Json.Tests
             //Assert.Equal("18", result?[0]["Age"]);
             //Assert.Equal(NullValue, result?[0]["MyAddress"]);
             //Assert.Equal("[\"Red\",\"Blue\"]", result?[0]["Colours"]);
-            Assert.Equal("John", result?[0].Name);
-            Assert.Equal("18", result?[0].Age);
-            Assert.Equal(NullValue, result?[0].MyAddress);
-            Assert.Equal("[\"Red\",\"Blue\"]", result?[0].Colours);
+            Assert.Equal("John", result?[0]["Name"]);
+            Assert.Equal("18", result?[0]["Age"]);
+            Assert.Equal(NullValue, result?[0]["MyAddress"]);
+            Assert.Equal("[\"Red\",\"Blue\"]", result?[0]["Colours"]);
         }
 
         //ToDo Change to tests
