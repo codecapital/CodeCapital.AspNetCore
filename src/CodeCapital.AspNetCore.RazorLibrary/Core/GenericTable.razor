@@ -1,4 +1,4 @@
-﻿@typeparam TItem
+@typeparam TItem
 @implements ITable
 <table class="@TableClass @(IsCounter ? _rowIndex : " ")">
     @ColGroup
@@ -73,7 +73,11 @@
 
         //var test = TableHeader.GetObjectData();
 
-        Sort();
+        if (firstRender)
+        {
+            Sort();
+        }
+
     }
 
     public void AddColumn(IColumnDef columnDef) => Columns.Add(columnDef);
@@ -83,6 +87,8 @@
         _sortedColumn = column;
 
         Sort();
+
+        StateHasChanged();
     }
 
     public void Sort()
@@ -112,8 +118,6 @@
         {
             columnDef.ResetSort();
         }
-
-        StateHasChanged();
     }
 
     private string GetTrClass(TItem item) => TrClassDelegate == null ? "" : TrClassDelegate.Invoke(item);
