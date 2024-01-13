@@ -2,7 +2,7 @@
 
     <PropertyGroup>
         <TargetFramework>net8.0</TargetFramework>
-        <Version>8.0.0</Version>
+        <Version>8.0.1</Version>
         <PackageVersion>$(Version)</PackageVersion>
         <Nullable>enable</Nullable>
         <Description>This library adds a few helpful components: If, ProgressBar, GenericTable</Description>
@@ -37,8 +37,8 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Microsoft.AspNetCore.Components" Version="8.0.0" />
-        <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="8.0.0" />
+        <PackageReference Include="Microsoft.AspNetCore.Components" Version="8.0.1" />
+        <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="8.0.1" />
     </ItemGroup>
 
     <ItemGroup>
