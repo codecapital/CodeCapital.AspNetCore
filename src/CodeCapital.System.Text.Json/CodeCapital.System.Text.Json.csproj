@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
-        <TargetFramework>net8.0</TargetFramework>
-        <Version>8.0.0</Version>
+        <TargetFramework>net9.0</TargetFramework>
+        <Version>9.0.0</Version>
         <PackageVersion>$(Version)</PackageVersion>
         <Authors>Vaclav Elias</Authors>
         <Description>JsonFlattener is a C# library that provides an easy way to flatten JSON objects or arrays into a flat list of key-value pairs. It supports various options, such as custom key delimiters, max depth, and removing indentation from nested objects. This library is built on top of System.Text.Json and is compatible with .NET Core.</Description>
