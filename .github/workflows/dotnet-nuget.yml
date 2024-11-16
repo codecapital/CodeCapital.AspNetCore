@@ -13,9 +13,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - name: Setup .NET
-      uses: actions/setup-dotnet@v1
+      uses: actions/setup-dotnet@v4
       with:
         dotnet-version: 8.0.x
         include-prerelease: true
@@ -27,37 +27,37 @@ jobs:
       run: dotnet test --no-build --verbosity normal
 
     - name: Publish ConfigurationJson
-      uses: alirezanet/publish-nuget@v3.0.1
+      uses: alirezanet/publish-nuget@v3.1.0
       with:
         PROJECT_FILE_PATH: src/CodeCapital.AspNetCore.Extensions.Configuration.Json/CodeCapital.AspNetCore.Extensions.Configuration.Json.csproj
         NUGET_KEY: ${{secrets.NUGET_API_KEY}}
 
     - name: Publish Renderer
-      uses: alirezanet/publish-nuget@v3.0.1
+      uses: alirezanet/publish-nuget@v3.1.0
       with:
         PROJECT_FILE_PATH: src/CodeCapital.AspNetCore.Mvc.Renderer/CodeCapital.AspNetCore.Mvc.Renderer.csproj
         NUGET_KEY: ${{secrets.NUGET_API_KEY}}
 
     - name: Publish TagHelpers
-      uses: alirezanet/publish-nuget@v3.0.1
+      uses: alirezanet/publish-nuget@v3.1.0
       with:
         PROJECT_FILE_PATH: src/CodeCapital.AspNetCore.Mvc.TagHelpers/CodeCapital.AspNetCore.Mvc.TagHelpers.csproj
         NUGET_KEY: ${{secrets.NUGET_API_KEY}}
 
     - name: Publish Services
-      uses: alirezanet/publish-nuget@v3.0.1
+      uses: alirezanet/publish-nuget@v3.1.0
       with:
         PROJECT_FILE_PATH: src/CodeCapital.Services/CodeCapital.Services.csproj
         NUGET_KEY: ${{secrets.NUGET_API_KEY}}
 
     - name: Publish RazorLibrary
-      uses: alirezanet/publish-nuget@v3.0.1
+      uses: alirezanet/publish-nuget@v3.1.0
       with:
         PROJECT_FILE_PATH: src/CodeCapital.AspNetCore.RazorLibrary/CodeCapital.AspNetCore.RazorLibrary.csproj
         NUGET_KEY: ${{secrets.NUGET_API_KEY}}
 
     - name: Publish Flattener
-      uses: alirezanet/publish-nuget@v3.0.1
+      uses: alirezanet/publish-nuget@v3.1.0
       with:
         PROJECT_FILE_PATH: src/CodeCapital.System.Text.Json/CodeCapital.System.Text.Json.csproj
         NUGET_KEY: ${{secrets.NUGET_API_KEY}}
